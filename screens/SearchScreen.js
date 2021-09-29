@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/core";
 import React, { useState, useEffect } from "react";
 import {
   View,
@@ -13,6 +14,8 @@ export default function SearchScreen() {
   const [text, onChangeText] = useState("");
 
   const [songs, setSongs] = useState([]);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     for (var i = 0; i < data.length; i++) {
@@ -53,7 +56,7 @@ export default function SearchScreen() {
               item;
               navigation.navigate("Song", {
                 title: item.title,
-                content: item.content,
+                content: item.number - 1,
               });
             }}
             style={styles.list}
